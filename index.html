@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tángara Investment Readiness | Capital para innovación climática</title>
+  <meta name="description" content="Tángara Investment Readiness prepara, conecta y financia emprendimientos climatech con tecnología validada." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#260052;
+      --ink-2:#3a0a76;
+      --violet:#4b009f;
+      --violet-2:#6b18d8;
+      --purple:#7a1cdc;
+      --magenta:#dc18a8;
+      --pink:#ff7bcf;
+      --peach:#ffc2b9;
+      --cream:#fff8f1;
+      --cream-2:#f8eef7;
+      --white:#fff;
+      --muted:#67577f;
+      --line:rgba(75,0,159,.18);
+      --shadow:0 24px 70px rgba(53,0,92,.14);
+      --shadow-strong:0 30px 90px rgba(36,0,78,.26);
+      --radius:34px;
+      --radius-lg:48px;
+      --max:1320px;
+      --nav-h:86px;
+      --font:'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:110px}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(220,24,168,.12), transparent 26rem),
+        radial-gradient(circle at 88% 18%, rgba(255,194,185,.42), transparent 28rem),
+        linear-gradient(180deg,#fffaf5 0%,#fff7fb 48%,#fffaf5 100%);
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(75,0,159,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(75,0,159,.045) 1px, transparent 1px);
+      background-size:58px 58px;
+      mask-image:radial-gradient(circle at 50% 30%,#000 0%, transparent 70%);
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button,input,textarea,select{font:inherit}
+    .skip-link{position:absolute;left:-999px;top:12px;background:var(--ink);color:white;padding:12px 16px;border-radius:999px;z-index:20}
+    .skip-link:focus{left:12px}
+    .container{width:min(var(--max),calc(100% - 72px));margin-inline:auto}
+    .scroll-progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--magenta),var(--pink),var(--violet-2));z-index:60;box-shadow:0 0 18px rgba(220,24,168,.7)}
+
+    .site-header{position:fixed;top:22px;left:0;right:0;z-index:50;transition:transform .35s ease, top .35s ease}
+    .nav-shell{
+      width:min(1280px,calc(100% - 72px));
+      min-height:var(--nav-h);
+      margin-inline:auto;
+      padding:12px 18px 12px 26px;
+      display:grid;
+      grid-template-columns:220px 1fr auto;
+      align-items:center;
+      gap:24px;
+      border:1px solid rgba(255,255,255,.52);
+      border-radius:999px;
+      background:rgba(255,255,255,.84);
+      backdrop-filter:blur(20px);
+      box-shadow:0 22px 80px rgba(42,0,82,.16);
+    }
+    .site-header.is-scrolled .nav-shell{background:rgba(255,255,255,.93);box-shadow:0 16px 60px rgba(42,0,82,.18)}
+    .brand-link{display:flex;align-items:center;width:205px}
+    .brand-link img{width:195px;max-height:62px;object-fit:contain;object-position:left center}
+    .nav-links{display:flex;justify-content:center;align-items:center;gap:clamp(18px,2vw,34px);font-size:15px;font-weight:700;color:#170034}
+    .nav-links a{position:relative;opacity:.92;transition:color .25s ease, opacity .25s ease}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-9px;width:100%;height:3px;border-radius:999px;background:var(--magenta);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
+    .nav-links a:hover,.nav-links a.active{color:var(--magenta);opacity:1}
+    .nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta,.btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;
+      min-height:52px;padding:0 26px;font-weight:800;letter-spacing:-.01em;transition:transform .25s ease, box-shadow .25s ease, background .25s ease,border-color .25s ease;
+      white-space:nowrap;
+    }
+    .nav-cta,.btn-primary{color:white;background:linear-gradient(135deg,var(--magenta),#c616d4 55%,var(--violet-2));box-shadow:0 16px 38px rgba(220,24,168,.34), inset 0 1px 0 rgba(255,255,255,.38)}
+    .nav-cta:hover,.btn:hover{transform:translateY(-2px)}
+    .btn-primary:hover{box-shadow:0 22px 48px rgba(220,24,168,.42), inset 0 1px 0 rgba(255,255,255,.38)}
+    .btn-ghost{background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.35)}
+    .light .btn-ghost,.btn-ghost.light{color:var(--violet);background:white;border-color:rgba(75,0,159,.25)}
+    .menu-toggle{display:none;width:48px;height:48px;border:0;border-radius:50%;background:#f6eaf7;color:var(--ink);place-items:center;cursor:pointer}
+    .menu-toggle span{display:block;width:20px;height:2px;margin:3px auto;background:currentColor;border-radius:999px}
+
+    main{position:relative;z-index:1}
+    .screen{min-height:100svh;display:flex;align-items:center;padding:128px 0 52px;position:relative;overflow:hidden;scroll-snap-align:start}
+    .screen.slim{min-height:auto;padding:110px 0 90px}
+    .dark{color:white;background:
+      radial-gradient(circle at 85% 15%, rgba(225,34,188,.88), transparent 34rem),
+      radial-gradient(circle at 55% 48%, rgba(116,27,225,.74), transparent 42rem),
+      radial-gradient(circle at 10% 100%, rgba(28,0,88,.9), transparent 45rem),
+      linear-gradient(135deg,#09002d 0%,#1c0052 46%,#4a008f 100%);
+    }
+    .dark::before,.dark::after{content:"";position:absolute;inset:auto;pointer-events:none;border-radius:50%;filter:blur(.2px)}
+    .dark::before{width:820px;height:820px;right:-250px;bottom:-420px;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 0 40px rgba(255,255,255,.025),0 0 0 80px rgba(255,255,255,.02)}
+    .dark::after{width:640px;height:640px;left:-300px;top:120px;border:1px solid rgba(255,255,255,.10);box-shadow:0 0 0 36px rgba(255,255,255,.02)}
+    .soft{background:
+      radial-gradient(circle at 82% 18%, rgba(220,24,168,.12), transparent 30rem),
+      radial-gradient(circle at 25% 80%, rgba(255,194,185,.35), transparent 30rem),
+      linear-gradient(180deg,#fffaf5 0%,#fff7fb 100%);
+    }
+    .panel{border-radius:var(--radius-lg);background:rgba(255,255,255,.78);border:1px solid rgba(75,0,159,.12);box-shadow:var(--shadow);backdrop-filter:blur(12px)}
+    .eyebrow{margin:0 0 16px;text-transform:uppercase;letter-spacing:.18em;font-weight:900;font-size:clamp(12px,1.1vw,16px);color:var(--magenta)}
+    .dark .eyebrow{color:#ffc2df}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2{font-weight:900;line-height:.94;letter-spacing:-.07em;text-wrap:balance}
+    h1{font-size:clamp(50px,6.5vw,104px);max-width:850px;margin-bottom:24px}
+    h2{font-size:clamp(44px,5.4vw,88px);margin-bottom:24px}
+    h3{font-size:clamp(23px,2vw,34px);line-height:1.05;letter-spacing:-.055em;margin-bottom:12px;font-weight:900}
+    p{font-size:clamp(15px,1.35vw,21px);line-height:1.55;color:var(--muted)}
+    .dark p{color:rgba(255,255,255,.82)}
+    .section-intro{max-width:760px;font-weight:500;margin-bottom:30px}
+    .button-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:34px}
+
+    .hero{padding-top:142px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(420px,.88fr);gap:70px;align-items:center;position:relative;z-index:2}
+    .hero-logo{width:min(270px,54vw);margin-bottom:36px;filter:drop-shadow(0 20px 40px rgba(0,0,0,.2))}
+    .hero-lead{max-width:780px;font-size:clamp(17px,1.45vw,24px)}
+    .hero-actions{display:flex;gap:18px;flex-wrap:wrap;margin-top:34px}
+    .hero-points{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px;max-width:850px}
+    .hero-points article{display:flex;gap:14px;align-items:center;color:rgba(255,255,255,.9);font-weight:700;font-size:15px;line-height:1.25}
+    .point-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.16);font-size:20px}
+    .hero-visual{position:relative;min-height:620px;display:grid;place-items:center}
+    .photo-shell{position:relative;width:min(520px,100%);aspect-ratio:1/1.04;border-radius:44px;overflow:hidden;border:1px solid rgba(255,255,255,.3);box-shadow:0 40px 120px rgba(0,0,0,.34),0 0 0 10px rgba(255,255,255,.08);background:linear-gradient(140deg,rgba(255,255,255,.13),rgba(255,255,255,.04))}
+    .photo-shell img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.02)}
+    .photo-shell::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(38,0,82,.78));pointer-events:none}
+    .floating-note{position:absolute;left:0;bottom:42px;width:min(350px,72%);padding:22px 24px;border-radius:24px;background:rgba(32,18,27,.62);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.26);display:flex;align-items:center;gap:18px}
+    .floating-note b{font-size:15px;line-height:1.35;color:white}
+    .floating-note .point-icon{background:linear-gradient(135deg,var(--violet),var(--magenta));border:0;flex:0 0 auto}
+    .dot-matrix{position:absolute;right:-20px;top:130px;width:130px;height:130px;opacity:.56;background-image:radial-gradient(rgba(255,255,255,.7) 1.4px, transparent 1.4px);background-size:14px 14px}
+
+    .logo-strip{position:relative;z-index:3;margin-top:-72px}
+    .logo-strip .strip-box{width:min(1160px,calc(100% - 72px));margin-inline:auto;border-radius:26px;background:rgba(255,255,255,.94);box-shadow:0 22px 65px rgba(33,0,70,.22);border:1px solid rgba(255,255,255,.7);padding:18px 28px;display:grid;grid-template-columns:repeat(6,1fr);gap:18px;align-items:center}
+    .strip-box img{height:42px;width:100%;object-fit:contain;filter:none}
+    .strip-box img.logo-bid{height:48px}.strip-box img.logo-2x{height:56px}.strip-box img.logo-fondo{height:50px}
+
+    .section-head{max-width:1040px;position:relative;z-index:2}.section-head.center{text-align:center;margin-inline:auto}.section-head.wide{max-width:1180px}
+    .support-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:64px;align-items:center;position:relative;z-index:1}
+    .support-flow{padding:50px;border-radius:42px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.035));box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 26px 90px rgba(0,0,0,.18)}
+    .flow-icons{display:grid;grid-template-columns:1fr 120px 1fr;align-items:center;gap:26px}
+    .flow-card{text-align:center}.flow-icon{width:155px;height:155px;margin:0 auto 20px;border-radius:35px;display:grid;place-items:center;background:linear-gradient(140deg,rgba(255,255,255,.18),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.2);box-shadow:0 24px 70px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.16);font-size:70px;color:#ffc2df}.flow-card strong{display:block;font-size:22px;color:white;line-height:1.18}.flow-card span{display:block;color:#ffc2df;font-weight:800;margin-bottom:8px;text-transform:uppercase;font-size:12px;letter-spacing:.1em}.flow-arrow{display:grid;place-items:center;color:#ffc2df;font-size:70px;font-weight:300}.support-logos{margin-top:42px;padding:20px 28px;border-radius:22px;background:white;display:grid;grid-template-columns:repeat(6,1fr);gap:20px;align-items:center}.support-logos img{width:100%;height:42px;object-fit:contain}.support-logos .logo-2x{height:54px}.support-logos .logo-fondo{height:48px}
+
+    .what-grid{display:grid;grid-template-columns:420px 1fr;gap:60px;align-items:center}.image-card{min-height:650px;border-radius:42px;overflow:hidden;position:relative;background:linear-gradient(135deg,#f5eee6,#eee2f3);box-shadow:var(--shadow);border:1px solid rgba(75,0,159,.1)}.image-card img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.image-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(59,0,112,.88))}.image-caption{position:absolute;left:28px;right:28px;bottom:32px;z-index:2;color:white}.image-caption strong{display:block;font-size:36px;line-height:1.02;letter-spacing:-.055em;margin-bottom:12px}.image-caption span{font-size:17px;color:rgba(255,255,255,.86)}
+    .step-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:34px}.step-card{position:relative;min-height:270px;padding:24px 20px;border-radius:28px;background:rgba(255,255,255,.82);border:1px solid rgba(75,0,159,.1);box-shadow:0 16px 48px rgba(42,0,82,.08)}.step-card:not(:last-child)::after{content:"";position:absolute;top:86px;right:-22px;width:24px;height:2px;background:var(--magenta);z-index:2}.num{display:block;color:var(--magenta);font-size:30px;font-weight:900;margin-bottom:14px}.mini-icon{width:70px;height:70px;border-radius:20px;display:grid;place-items:center;margin-bottom:18px;color:white;background:linear-gradient(145deg,var(--magenta),var(--violet));box-shadow:0 14px 34px rgba(75,0,159,.22);font-size:30px}.step-card h3{font-size:21px;margin-bottom:10px}.step-card p{font-size:14px;line-height:1.5;margin:0}
+    .bridge{margin-top:48px;padding:28px 40px;border-radius:36px;background:rgba(255,255,255,.82);border:1px solid rgba(75,0,159,.1);box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1.1fr 1fr;align-items:center;gap:28px}.bridge-node{display:flex;align-items:center;gap:16px;font-weight:900;font-size:26px;line-height:1.05}.bridge-node .mini-icon{margin:0}.bridge-logo{display:flex;justify-content:center;align-items:center;gap:26px}.bridge-logo::before,.bridge-logo::after{content:"";height:2px;flex:1;background:linear-gradient(90deg,transparent,var(--magenta))}.bridge-logo::after{background:linear-gradient(90deg,var(--magenta),transparent)}.bridge-logo img{width:245px;object-fit:contain}
+
+    .metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px}.metric-grid.four{grid-template-columns:repeat(4,1fr)}.metric-card{min-height:176px;padding:28px;border-radius:26px;background:rgba(255,255,255,.7);border:1px solid rgba(75,0,159,.13);box-shadow:0 18px 52px rgba(42,0,82,.08);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.metric-card .metric-icon{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;margin-bottom:10px;background:#fff1fb;color:var(--magenta);box-shadow:0 12px 30px rgba(220,24,168,.18);font-size:26px}.metric-number{font-size:clamp(52px,6vw,94px);line-height:.92;font-weight:900;letter-spacing:-.065em;color:var(--ink)}.metric-card p{font-size:17px;line-height:1.35;font-weight:700;margin:14px 0 0;color:#4e3b69}.metric-unit{font-weight:900;font-size:34px;margin-left:6px}.closing-note{display:flex;align-items:center;gap:18px;margin-top:34px;font-weight:900;color:var(--ink);font-size:20px}.closing-note .leaf{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#fff1fb;color:var(--magenta);box-shadow:0 12px 30px rgba(220,24,168,.18)}.closing-note small{display:block;margin-top:16px;color:var(--muted);font-size:13px;font-weight:700}
+
+    .vertical-grid,.profile-grid,.mechanism-grid{display:grid;gap:24px}.vertical-grid{grid-template-columns:repeat(4,1fr);margin-top:38px}.vertical-card{min-height:340px;padding:34px;border-radius:32px;background:white;border:1px solid rgba(75,0,159,.1);box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}.vertical-card:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(42,0,82,.16)}.vertical-card .mini-icon{width:82px;height:82px;border-radius:22px;font-size:34px}.vertical-card h3{font-size:28px}.vertical-card p{font-size:16px;line-height:1.55;margin:0}.profile-grid{grid-template-columns:1fr 1fr;margin-top:34px}.check-card{padding:36px 40px;border-radius:34px;background:rgba(255,255,255,.78);border:1px solid rgba(75,0,159,.13);box-shadow:var(--shadow)}.check-card ul{padding:0;margin:22px 0 0;display:grid;gap:17px;list-style:none}.check-card li{position:relative;padding-left:42px;font-size:17px;line-height:1.48;color:#504267;font-weight:500}.check-card li::before{content:"✓";position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:linear-gradient(145deg,var(--magenta),#b200d4);color:white;display:grid;place-items:center;font-weight:900;font-size:15px}
+
+    .gender-panel{display:grid;grid-template-columns:1.05fr .75fr;gap:58px;align-items:center;padding:58px;border-radius:46px;background:
+      radial-gradient(circle at 85% 80%, rgba(220,24,168,.86), transparent 24rem),
+      linear-gradient(135deg,#2b006f 0%,#6204bb 62%,#c91fb3 100%);color:white;box-shadow:var(--shadow-strong);position:relative;overflow:hidden}.gender-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 0%,rgba(255,255,255,.14),transparent 32rem);pointer-events:none}.gender-panel>*{position:relative}.gender-copy p{font-size:19px;color:rgba(255,255,255,.86)}.gender-copy strong{display:block;color:#ffc2b9;font-size:21px;margin:26px 0 18px}.gender-copy small{font-weight:800;color:white}.gender-photo{margin:0;aspect-ratio:1/1.03;border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.26);box-shadow:0 24px 90px rgba(0,0,0,.26);background:rgba(255,255,255,.12)}.gender-photo img{width:100%;height:100%;object-fit:cover}
+
+    .funnel-panel{text-align:center;padding:62px 70px;border-radius:48px;background:
+      radial-gradient(circle at 85% 80%,rgba(220,24,168,.85),transparent 26rem),
+      radial-gradient(circle at 50% 5%,rgba(255,255,255,.16),transparent 26rem),
+      linear-gradient(135deg,#130050 0%,#4e00a3 55%,#c71fb9 100%);color:white;box-shadow:var(--shadow-strong);border:1px solid rgba(255,255,255,.13)}.funnel-panel h2{margin-inline:auto;max-width:930px}.funnel-visual{display:grid;grid-template-columns:1fr 150px 1fr 150px 1fr;align-items:center;gap:10px;margin:32px auto 24px;max-width:1040px}.funnel-number{display:block;font-size:clamp(86px,10vw,156px);font-weight:900;letter-spacing:-.08em;line-height:.8;color:#ffc2b9}.funnel-node small{font-size:18px;font-weight:800;color:white}.funnel-visual svg{width:100%;height:60px}.funnel-visual path{stroke:white;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}.funnel-copy{max-width:990px;margin:0 auto 22px;font-weight:700;color:white}.funnel-metrics{display:inline-flex;justify-content:center;max-width:1080px;padding:18px 28px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);font-weight:900;color:white;margin-top:8px}.phase-disclaimer{font-size:14px;max-width:890px;margin:26px auto 0;color:rgba(255,255,255,.75)}
+
+    .investor-tabs{margin:30px 0 34px;padding:16px 20px;border-radius:24px;background:rgba(255,226,246,.78);border:1px solid rgba(220,24,168,.08);overflow:hidden}.marquee{display:flex;gap:16px;width:max-content;animation:marquee 26s linear infinite}.marquee span{display:inline-flex;align-items:center;min-height:42px;padding:0 22px;border-radius:999px;background:linear-gradient(135deg,var(--ink),var(--violet));color:white;font-size:14px;font-weight:800;box-shadow:0 8px 20px rgba(75,0,159,.15)}.marquee i{width:8px;height:8px;border-radius:50%;background:var(--magenta);align-self:center}@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .mechanism-grid{grid-template-columns:1fr 1fr}.mechanism-card{display:grid;grid-template-columns:86px 1fr;gap:24px;align-items:center;min-height:190px;padding:34px;border-radius:32px;background:white;border:1px solid rgba(75,0,159,.1);box-shadow:var(--shadow)}.mechanism-card .mini-icon{margin:0}.mechanism-card p{font-size:18px;margin:0}.investor-close{margin-top:32px;font-size:20px;font-weight:900;color:var(--ink)}
+
+    .alliance .section-head{max-width:1140px}.alliance-card-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:34px}.ally-card{padding:22px 18px;border-radius:22px;background:rgba(255,255,255,.88);border:1px solid rgba(75,0,159,.12);box-shadow:0 14px 44px rgba(42,0,82,.08);display:flex;flex-direction:column;min-height:305px}.ally-card .tag{text-transform:uppercase;letter-spacing:.1em;color:var(--magenta);font-weight:900;font-size:11px;text-align:center;margin-bottom:15px}.ally-card .logo-box{height:75px;display:grid;place-items:center;margin-bottom:16px;border-bottom:1px solid rgba(75,0,159,.12);padding-bottom:16px}.ally-card img{max-width:100%;max-height:58px;object-fit:contain}.ally-card img.logo-2x{max-height:70px}.ally-card img.logo-fondo{max-height:58px}.ally-card p{font-size:13.4px;line-height:1.52;margin:0;color:#3d3150}.ally-card:first-child{order:-2}.ally-card.feature{background:white;box-shadow:0 22px 70px rgba(42,0,82,.14)}
+
+    .faq-grid{display:grid;grid-template-columns:.72fr 1fr;gap:70px;align-items:center}.faq-list{display:grid;gap:18px}.faq-item{border:1px solid rgba(75,0,159,.12);border-radius:26px;background:rgba(255,255,255,.83);box-shadow:0 16px 46px rgba(42,0,82,.08);overflow:hidden}.faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;border:0;background:transparent;color:var(--ink);padding:26px 32px;text-align:left;font-weight:900;font-size:21px;cursor:pointer}.faq-question b{font-size:28px;color:var(--magenta);line-height:1}.faq-answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}.faq-answer>div{overflow:hidden;padding:0 32px;color:#4c3d68;font-size:17px;line-height:1.6}.faq-item.open .faq-answer{grid-template-rows:1fr}.faq-item.open .faq-answer>div{padding-bottom:28px}.faq-item.open .faq-question b{transform:rotate(45deg)}
+
+    .closing-panel{display:grid;grid-template-columns:1fr .78fr;gap:60px;align-items:center;padding:48px;border-radius:46px;background:rgba(255,255,255,.75);border:1px solid rgba(75,0,159,.14);box-shadow:var(--shadow)}.closing-panel .btn-ghost{color:var(--violet);background:white;border-color:rgba(75,0,159,.25)}.closing-photo{margin:0;aspect-ratio:1.05/1;border-radius:38px;overflow:hidden;background:linear-gradient(135deg,#efe4ef,#fff8f1);border:1px solid rgba(75,0,159,.12);position:relative}.closing-photo img{width:100%;height:100%;object-fit:cover}.closing-photo::after{content:"";position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(180deg,transparent,rgba(75,0,159,.74))}
+    .footer{padding:34px 0 46px;background:#13002c;color:white}.footer-grid{display:grid;grid-template-columns:310px 1fr;gap:44px;align-items:center}.footer img{width:220px;margin-bottom:16px}.footer p{color:rgba(255,255,255,.82);font-size:14px;margin:0}.footer-disclaimer{border-left:1px solid rgba(255,255,255,.3);padding-left:40px}.footer-disclaimer strong{color:white}.footer-disclaimer span{display:block;margin-top:14px;color:#ffc2df;font-weight:800;font-size:14px}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}.reveal.in-view{opacity:1;transform:none}.optional-img.is-missing{display:none}.fallback-gradient{background:linear-gradient(135deg,#f8e8f8 0%,#dcc6f1 48%,#ffd7cc 100%)}
+    @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+    @media (min-width: 1024px){html{scroll-snap-type:y proximity}.screen{scroll-snap-align:start}}
+    @media (max-width:1180px){.container,.nav-shell{width:min(100% - 40px,var(--max))}.nav-shell{grid-template-columns:200px 1fr auto}.nav-links{gap:18px}.hero-grid,.support-grid,.what-grid,.gender-panel,.closing-panel,.faq-grid{grid-template-columns:1fr}.hero-visual{min-height:520px}.what-grid .image-card{min-height:430px}.step-grid{grid-template-columns:repeat(3,1fr)}.vertical-grid,.metric-grid.four{grid-template-columns:repeat(2,1fr)}.alliance-card-grid{grid-template-columns:repeat(3,1fr)}.logo-strip .strip-box,.support-logos{grid-template-columns:repeat(3,1fr)}.bridge{grid-template-columns:1fr}.bridge-logo::before,.bridge-logo::after{display:none}}
+    @media (max-width:840px){:root{--nav-h:72px}.site-header{top:12px}.nav-shell{grid-template-columns:1fr auto;min-height:72px;border-radius:28px;padding:10px 12px 10px 18px}.brand-link{width:170px}.brand-link img{width:160px}.menu-toggle{display:grid}.nav-links{position:absolute;left:20px;right:20px;top:86px;display:none;flex-direction:column;align-items:stretch;padding:18px;border-radius:24px;background:white;box-shadow:var(--shadow)}.nav-links.open{display:flex}.nav-links a{padding:10px 12px}.nav-cta{display:none}.screen{min-height:auto;padding:118px 0 58px}.hero-grid{grid-template-columns:1fr;gap:34px}.hero-points,.metric-grid,.profile-grid,.mechanism-grid,.funnel-visual{grid-template-columns:1fr}.funnel-visual svg{transform:rotate(90deg);height:80px}.funnel-panel,.gender-panel,.closing-panel{padding:34px 22px;border-radius:34px}.step-grid,.vertical-grid,.alliance-card-grid{grid-template-columns:1fr}.flow-icons{grid-template-columns:1fr}.flow-arrow{transform:rotate(90deg);height:80px}.support-flow{padding:30px}.faq-grid{gap:26px}.footer-grid{grid-template-columns:1fr}.footer-disclaimer{border-left:0;padding-left:0}.logo-strip{margin-top:0;padding:20px 0}.logo-strip .strip-box,.support-logos{grid-template-columns:repeat(2,1fr)}.container{width:min(100% - 30px,var(--max))}h1{font-size:clamp(42px,13vw,64px)}h2{font-size:clamp(38px,12vw,58px)}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <nav class="nav-shell" aria-label="Navegación principal">
+      <a class="brand-link" href="#inicio" aria-label="Ir al inicio de Tángara Investment Readiness">
+        <img src="assets/logo-tangara-color.png" alt="Tángara Alistamiento para la Inversión" />
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
+      <div class="nav-links" data-nav-links>
+        <a href="#que-es">Qué somos</a>
+        <a href="#verticales">Verticales</a>
+        <a href="#perfil">Perfil</a>
+        <a href="#inversionistas">Inversionistas</a>
+        <a href="#alianza">Alianza</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="nav-cta" href="https://tangara-investmentreadiness.odoo.com/contactus" target="_blank" rel="noopener">Postúlate</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="screen dark hero" id="inicio" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <img class="hero-logo reveal" src="assets/logo-tangara-white.png" alt="Tángara Alistamiento para la Inversión" />
+          <p class="eyebrow reveal">Capital para innovación climática</p>
+          <h1 id="hero-title" class="reveal">El capital climático que impulsa soluciones de alto impacto.</h1>
+          <p class="hero-lead reveal">Prepara tu emprendimiento para atraer inversión y escalar soluciones que enfrentan el cambio climático.</p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="https://tangara-investmentreadiness.odoo.com/contactus" target="_blank" rel="noopener">Postúlate al programa →</a>
+            <a class="btn btn-ghost" href="#que-es">Conoce más →</a>
+          </div>
+          <div class="hero-points reveal" aria-label="Beneficios principales">
+            <article><span class="point-icon">♙</span><span>Fortalece tu modelo de negocio</span></article>
+            <article><span class="point-icon">▥</span><span>Conéctate con inversionistas</span></article>
+            <article><span class="point-icon">◌</span><span>Acelera soluciones climáticas reales</span></article>
+          </div>
+        </div>
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="dot-matrix"></div>
+          <figure class="photo-shell fallback-gradient">
+            <img class="optional-img" src="founder-green.webp" alt="Emprendedora climatech" />
+          </figure>
+          <div class="floating-note"><span class="point-icon">◐</span><b>Impulsamos emprendimientos que construyen un futuro regenerativo y sostenible.</b></div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="logo-strip" aria-label="Organizaciones aliadas del programa">
+      <div class="strip-box">
+        <img src="assets/logo-ean-impacta.png" alt="Universidad Ean e Impacta Emprendimiento Sostenible" />
+        <img class="logo-fondo" src="assets/logo-fondo-impacta.png" alt="Impacta Fondo de Capital Privado" />
+        <img class="logo-2x" src="assets/logo-2x-global.png" alt="2X Global" />
+        <img src="assets/logo-biointropic.png" alt="Biointropic" />
+        <img class="logo-bid" src="assets/logo-bid-lab.png" alt="BID Lab" />
+        <img src="assets/logo-connect.png" alt="Connect" />
+      </div>
+    </aside>
+
+    <section class="screen dark" id="respaldo" aria-labelledby="support-title">
+      <div class="container support-grid">
+        <div class="section-head">
+          <p class="eyebrow reveal">Respaldo institucional</p>
+          <h2 id="support-title" class="reveal">Un programa con respaldo.</h2>
+          <p class="reveal">BID Lab financia el programa a través del Fondo Verde Catalítico, su instrumento para movilizar capital hacia soluciones climáticas en América Latina y el Caribe. Universidad Ean, Connect y Biointropic ejecutan. El Fondo Impacta opera como vehículo financiero especializado.</p>
+        </div>
+        <div class="support-flow reveal">
+          <div class="flow-icons">
+            <article class="flow-card"><div class="flow-icon">$</div><span>Capital movilizado</span><strong>BID Lab + Fondo Verde Catalítico</strong></article>
+            <div class="flow-arrow">→</div>
+            <article class="flow-card"><div class="flow-icon">♧</div><span>Soluciones climáticas</span><strong>Emprendimientos climatech listos para escalar</strong></article>
+          </div>
+          <div class="support-logos" aria-label="Logos institucionales">
+            <img src="assets/logo-ean-impacta.png" alt="Universidad Ean e Impacta" />
+            <img class="logo-fondo" src="assets/logo-fondo-impacta.png" alt="Fondo Impacta" />
+            <img class="logo-2x" src="assets/logo-2x-global.png" alt="2X Global" />
+            <img src="assets/logo-biointropic.png" alt="Biointropic" />
+            <img src="assets/logo-bid-lab.png" alt="BID Lab" />
+            <img src="assets/logo-connect.png" alt="Connect" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen soft" id="que-es" aria-labelledby="what-title">
+      <div class="container what-grid">
+        <aside class="image-card fallback-gradient reveal">
+          <img class="optional-img" src="lab-bio.webp" alt="Laboratorio de bioeconomía" />
+          <div class="image-caption"><strong>Tecnologías listas para escalar</strong><span>Climatech con validación técnica, comercial y financiera.</span></div>
+        </aside>
+        <div>
+          <div class="section-head wide">
+            <p class="eyebrow reveal">Qué es Tángara Investment Readiness</p>
+            <h2 id="what-title" class="reveal">Un programa que no se queda en el alistamiento.</h2>
+            <p class="section-intro reveal">Tángara acompaña emprendimientos climatech desde el diagnóstico hasta la conexión con capital y pilotos.</p>
+          </div>
+          <div class="step-grid">
+            <article class="step-card reveal"><span class="num">01</span><div class="mini-icon">⌕</div><h3>Diagnóstico</h3><p>Evaluamos madurez, brechas y potencial de inversión.</p></article>
+            <article class="step-card reveal"><span class="num">02</span><div class="mini-icon">♧</div><h3>Estructuración financiera y gobernanza</h3><p>Ordenamos modelo financiero, gobierno y ruta de crecimiento.</p></article>
+            <article class="step-card reveal"><span class="num">03</span><div class="mini-icon">♢</div><h3>Debida diligencia técnica, legal y ASG</h3><p>Validamos riesgos, cumplimiento y solidez operativa.</p></article>
+            <article class="step-card reveal"><span class="num">04</span><div class="mini-icon">▤</div><h3>Materiales de inversión</h3><p>Preparamos memo, pitch y data room para inversionistas.</p></article>
+            <article class="step-card reveal"><span class="num">05</span><div class="mini-icon">◎</div><h3>Conexión con capital y pilotos</h3><p>Activamos acceso a pilotos comerciales y oportunidades de financiamiento.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen soft" id="urgencia" aria-labelledby="urgency-title">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow reveal">La urgencia</p>
+          <h2 id="urgency-title" class="reveal">La innovación climática existe. Lo que falta es facilitar el financiamiento.</h2>
+          <p class="section-intro reveal">Colombia ya paga el costo de no actuar a tiempo:</p>
+        </div>
+        <div class="metric-grid" data-count-section>
+          <article class="metric-card reveal"><span class="metric-icon">◌</span><span class="metric-number" data-count="47" data-suffix="%">0%</span><p>del territorio colombiano en riesgo climático alto.</p></article>
+          <article class="metric-card reveal"><span class="metric-icon">▥</span><span class="metric-number" data-count="4.3" data-decimals="1" data-suffix="%">0%</span><p>del PIB perdido cada año por impactos climáticos.</p></article>
+          <article class="metric-card reveal"><span class="metric-icon">☁</span><span><span class="metric-number" data-count="110" data-suffix="K">0K</span><span class="metric-unit">tCO₂</span></span><p>como meta de mitigación del programa.</p></article>
+        </div>
+        <div class="closing-note reveal"><span class="leaf">♧</span><div>Tángara convierte tecnologías validadas en activos invertibles, listos para escalar.<small>Fuente: DNP, Estrategia Nacional de Financiamiento Climático.</small></div></div>
+      </div>
+    </section>
+
+    <section class="screen soft" id="verticales" aria-labelledby="verticals-title">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow reveal">Verticales climáticas</p>
+          <h2 id="verticals-title" class="reveal">Cuatro frentes donde la tecnología transforma la economía.</h2>
+        </div>
+        <div class="vertical-grid">
+          <article class="vertical-card reveal"><div class="mini-icon">🧬</div><h3>Bioeconomía</h3><p>Biotecnología, ingredientes naturales, biomateriales y soluciones basadas en recursos biológicos.</p></article>
+          <article class="vertical-card reveal"><div class="mini-icon">🌱</div><h3>Agrotecnología</h3><p>Productividad, resiliencia climática, monitoreo, trazabilidad y agricultura sostenible.</p></article>
+          <article class="vertical-card reveal"><div class="mini-icon">↻</div><h3>Economía circular</h3><p>Transformación de residuos, nuevos materiales y modelos productivos circulares.</p></article>
+          <article class="vertical-card reveal"><div class="mini-icon">⚡</div><h3>Transición energética</h3><p>Energía limpia, eficiencia, electrificación, almacenamiento y descarbonización industrial.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen soft" id="perfil" aria-labelledby="profile-title">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow reveal">Perfil de participación</p>
+          <h2 id="profile-title" class="reveal">¿Tu emprendimiento está listo para escalar?</h2>
+          <p class="section-intro reveal">Buscamos empresas climatech con tecnología validada, tracción comercial y voluntad de asumir estándares de inversión.</p>
+        </div>
+        <div class="profile-grid">
+          <article class="check-card reveal"><h3>Tecnología y mercado</h3><ul><li>Solución alineada con bioeconomía, agrotecnología, economía circular o transición energética.</li><li>Madurez tecnológica TRL 7, 8 o 9.</li><li>Empresa legalmente constituida con mínimo 3 años de operación.</li><li>Ventas anuales desde US$80.000.</li><li>Colombia como mercado estratégico u operación en países de Alianza Pacífico.</li></ul></article>
+          <article class="check-card reveal"><h3>Equipo y disposición</h3><ul><li>Voluntad de profesionalizar gobernanza y toma de decisiones.</li><li>Apertura para estructurar modelo financiero con estándares internacionales.</li><li>Disposición para procesos de debida diligencia.</li><li>Liderazgo femenino priorizado.</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="embudo" aria-labelledby="funnel-title">
+      <div class="container funnel-panel" data-count-section>
+        <p class="eyebrow reveal">Cómo funciona</p>
+        <h2 id="funnel-title" class="reveal">Un proceso progresivo. Decisiones por mérito.</h2>
+        <div class="funnel-visual reveal">
+          <div class="funnel-node"><span class="funnel-number" data-count="44">0</span><small>inician</small></div>
+          <svg viewBox="0 0 180 34" aria-hidden="true"><path d="M8 17 H154 M132 5 L154 17 L132 29" /></svg>
+          <div class="funnel-node"><span class="funnel-number" data-count="22">0</span><small>avanzan</small></div>
+          <svg viewBox="0 0 180 34" aria-hidden="true"><path d="M8 17 H154 M132 5 L154 17 L132 29" /></svg>
+          <div class="funnel-node"><span class="funnel-number" data-count="15">0</span><small>acceden</small></div>
+        </div>
+        <p class="funnel-copy reveal">44 emprendimientos inician el alistamiento. 22 avanzan a preparación avanzada para inversión. Hasta 15 oportunidades acceden a financiamiento o pilotos cofinanciados.</p>
+        <div class="funnel-metrics reveal">US$1.5M proyectados en red de movilización · US$50K para pilotos corporativos · Fondo Impacta como vehículo de inversión.</div>
+        <p class="phase-disclaimer reveal">ⓘ El avance entre fases depende del desempeño, la debida diligencia y la decisión de los comités. La participación no constituye promesa de inversión.</p>
+      </div>
+    </section>
+
+    <section class="screen soft" id="inversionistas" aria-labelledby="investors-title">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow reveal">Para inversionistas y corporativos</p>
+          <h2 id="investors-title" class="reveal">Un portafolio curado. Dos formas de participar.</h2>
+          <p class="section-intro reveal">Tángara reduce la fricción del proceso de inversión: identifica, prepara y estructura emprendimientos antes de la conversación de capital.</p>
+        </div>
+        <div class="investor-tabs reveal" aria-hidden="true"><div class="marquee"><span>Memos de inversión</span><i></i><span>Due diligence</span><i></i><span>Fondo Impacta</span><i></i><span>Estándares 2X</span><i></i><span>Red de movilización</span><i></i><span>BID Lab</span><i></i><span>Coinversión</span><i></i><span>Pilotos corporativos</span><i></i><span>Memos de inversión</span><i></i><span>Due diligence</span><i></i><span>Fondo Impacta</span><i></i><span>Estándares 2X</span><i></i><span>Red de movilización</span><i></i><span>BID Lab</span><i></i><span>Coinversión</span><i></i><span>Pilotos corporativos</span></div></div>
+        <div class="mechanism-grid">
+          <article class="mechanism-card reveal"><div class="mini-icon">☷</div><div><h3>Coinversión</h3><p>Participa junto al Fondo Impacta en la red proyectada de US$1.5 millones en movilización.</p></div></article>
+          <article class="mechanism-card reveal"><div class="mini-icon">🚀</div><div><h3>Innovación abierta</h3><p>Cofinanciamos pilotos comerciales por US$50.000 para validar soluciones en entornos corporativos reales.</p></div></article>
+        </div>
+        <p class="investor-close reveal">Memos estructurados · Due diligence progresiva · Indicadores de impacto verificables alineados con estándares 2X.</p>
+      </div>
+    </section>
+
+    <section class="screen" id="genero" aria-labelledby="gender-title">
+      <div class="container gender-panel">
+        <div class="gender-copy">
+          <p class="eyebrow reveal">Investment readiness con lente de género</p>
+          <h2 id="gender-title" class="reveal">El capital climático también cierra brechas.</h2>
+          <p class="reveal">En la industria climatech latinoamericana, las startups fundadas por mujeres reciben apenas el 1,14% del capital invertido en la región. Tángara cambia esa estadística.</p>
+          <p class="reveal">80% de las empresas financiadas tendrán liderazgo femenino. Un módulo especializado fortalece acceso a capital, gobernanza y negociación para emprendedoras climáticas.</p>
+          <strong class="reveal">Una decisión de diseño, no un complemento.</strong>
+          <small class="reveal">Fuente: PwC, 2025; Climate Policy Lab, Tufts University.</small>
+        </div>
+        <figure class="gender-photo fallback-gradient reveal"><img class="optional-img" src="neylla-gescol.webp" alt="Emprendedora en entorno productivo" /></figure>
+      </div>
+    </section>
+
+    <section class="screen soft alliance" id="alianza" aria-labelledby="alliance-title">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow reveal">Quiénes hacen Tángara</p>
+          <h2 id="alliance-title" class="reveal">Una alianza diseñada para llevar la innovación climática al capital.</h2>
+        </div>
+        <div class="alliance-card-grid">
+          <article class="ally-card feature reveal"><span class="tag">Ejecutan</span><div class="logo-box"><img src="assets/logo-ean-impacta.png" alt="Universidad Ean e Impacta Emprendimiento Sostenible" /></div><p>Pionera en emprendimiento sostenible en Colombia, con trayectoria acompañando y financiando soluciones de alto crecimiento. Ejecuta como organismo principal del programa.</p></article>
+          <article class="ally-card feature reveal"><span class="tag">Financiado por</span><div class="logo-box"><img src="assets/logo-bid-lab.png" alt="BID Lab" /></div><p>Laboratorio de innovación del Grupo BID. Financia el programa a través del Fondo Verde Catalítico, aportando credibilidad institucional, metodología y red regional.</p></article>
+          <article class="ally-card reveal"><span class="tag">Ejecuta</span><div class="logo-box"><img src="assets/logo-connect.png" alt="Connect" /></div><p>Acelera emprendimientos de base científica y tecnológica. Lidera Connect ClimateTech Accelerator con enfoque multicorporativo y experiencia en innovación climática.</p></article>
+          <article class="ally-card reveal"><span class="tag">Ejecuta</span><div class="logo-box"><img src="assets/logo-biointropic.png" alt="Biointropic" /></div><p>Centro de innovación reconocido por Minciencias, con experiencia en bioeconomía, biotecnología y acompañamiento a empresas de alto potencial.</p></article>
+          <article class="ally-card reveal"><span class="tag">Vehículo financiero</span><div class="logo-box"><img class="logo-fondo" src="assets/logo-fondo-impacta.png" alt="Impacta Fondo de Capital Privado" /></div><p>Vehículo financiero del programa. Fondo de Capital Privado especializado en soluciones climáticas, gestionado por la Fundación para el Emprendimiento Impacta.</p></article>
+          <article class="ally-card reveal"><span class="tag">Estándares</span><div class="logo-box"><img class="logo-2x" src="assets/logo-2x-global.png" alt="2X Global" /></div><p>Organización global de membresía y fortalecimiento del ecosistema, integrada por inversionistas, proveedores de capital e intermediarios en mercados públicos y privados.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen soft" id="trayectoria" aria-labelledby="track-title">
+      <div class="container">
+        <div class="section-head wide">
+          <p class="eyebrow reveal">Trayectoria</p>
+          <h2 id="track-title" class="reveal">No empezamos en cero.</h2>
+          <p class="section-intro reveal">Tángara Investment Readiness es la segunda fase del programa Tángara ClimAccelerator, ejecutado entre 2024 y 2025 con apoyo técnico de Climate-KIC.</p>
+          <p class="section-intro reveal"><strong>La metodología funciona. Esta nueva fase la lleva al siguiente nivel: del alistamiento al capital.</strong></p>
+        </div>
+        <div class="metric-grid four" data-count-section>
+          <article class="metric-card reveal"><span class="metric-number" data-count="30">0</span><p>startups acompañadas en Colombia, Chile, Ecuador y Brasil.</p></article>
+          <article class="metric-card reveal"><span class="metric-number" data-count="2.69" data-prefix="US$" data-suffix="M" data-decimals="2">US$0M</span><p>en ventas consolidadas.</p></article>
+          <article class="metric-card reveal"><span><span class="metric-number" data-count="58096" data-separator=".">0</span><span class="metric-unit">tCO₂</span></span><p>evitadas por las soluciones acompañadas.</p></article>
+          <article class="metric-card reveal"><span class="metric-number" data-count="450">0</span><p>horas de mentoría especializada.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen soft" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <div class="section-head">
+          <p class="eyebrow reveal">Preguntas frecuentes</p>
+          <h2 id="faq-title" class="reveal">Resuelve dudas antes de postular.</h2>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item reveal open"><button class="faq-question" type="button"><span>¿Ser seleccionado garantiza inversión?</span><b>+</b></button><div class="faq-answer"><div>No. La participación abre acceso al proceso de alistamiento. La eventual financiación depende del desempeño, la debida diligencia y las decisiones de los comités competentes.</div></div></article>
+          <article class="faq-item reveal"><button class="faq-question" type="button"><span>¿Qué tan avanzada debe estar la tecnología?</span><b>+</b></button><div class="faq-answer"><div>Debe estar en TRL 7, 8 o 9: soluciones probadas en entornos reales o ya en operación.</div></div></article>
+          <article class="faq-item reveal"><button class="faq-question" type="button"><span>¿Qué empresas se priorizan?</span><b>+</b></button><div class="faq-answer"><div>Climatech con tracción comercial en bioeconomía, agrotecnología, economía circular o transición energética. El liderazgo femenino se prioriza.</div></div></article>
+          <article class="faq-item reveal"><button class="faq-question" type="button"><span>¿Qué recibe una empresa seleccionada?</span><b>+</b></button><div class="faq-answer"><div>Diagnóstico, mentoría especializada, estructuración financiera, materiales de inversión, debida diligencia y conexión con capital o pilotos según desempeño.</div></div></article>
+          <article class="faq-item reveal"><button class="faq-question" type="button"><span>¿Quién financia el programa?</span><b>+</b></button><div class="faq-answer"><div>BID Lab a través del Fondo Verde Catalítico, con participación de las entidades aliadas del programa.</div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen soft" id="postulacion" aria-labelledby="closing-title">
+      <div class="container closing-panel light">
+        <div>
+          <p class="eyebrow reveal">Cohorte abierta · cupos limitados</p>
+          <h2 id="closing-title" class="reveal">Tu solución climática puede ser la próxima en escalar.</h2>
+          <p class="section-intro reveal">Si tu tecnología ya está validada y tu empresa lista para crecer, Tángara organiza la ruta hacia inversión, pilotos y conexiones estratégicas. Con respaldo de BID Lab a través del Fondo Verde Catalítico.</p>
+          <div class="button-row reveal"><a class="btn btn-primary" href="https://tangara-investmentreadiness.odoo.com/contactus" target="_blank" rel="noopener">Postular mi emprendimiento ↗</a><a class="btn btn-ghost" href="https://tangara-investmentreadiness.odoo.com/web/content/652?download=true&unique=f7c7f3c7c9c0a891c87223b960dfe7b1c8c9a221" target="_blank" rel="noopener">Descargar términos de referencia</a></div>
+        </div>
+        <figure class="closing-photo fallback-gradient reveal"><img class="optional-img" src="founder-green.webp" alt="Emprendedora climatech" /></figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><img src="assets/logo-tangara-white.png" alt="Tángara Alistamiento para la Inversión" /><p>Capital para innovación climática.</p></div>
+      <div class="footer-disclaimer"><p><strong>Disclaimer:</strong> La participación en Tángara Investment Readiness y el avance entre fases no constituyen promesa, obligación ni garantía de inversión, cofinanciación de pilotos, desembolsos o contratación. Toda decisión posterior estará sujeta al desempeño del emprendimiento, a la evaluación técnica y financiera, a los procesos de debida diligencia, a las decisiones de los comités competentes y a la disponibilidad de recursos.</p><span>tangara.ir@universidadean.edu.co · © Tángara Investment Readiness</span></div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('[data-header]');
+    const progress = document.querySelector('.scroll-progress');
+    const menuToggle = document.querySelector('[data-menu-toggle]');
+    const navLinks = document.querySelector('[data-nav-links]');
+    const navAnchors = [...document.querySelectorAll('.nav-links a')];
+    const sections = navAnchors.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+    function updateScrollUI(){
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const pct = max > 0 ? (scrollY / max) * 100 : 0;
+      progress.style.width = pct + '%';
+      header.classList.toggle('is-scrolled', scrollY > 18);
+    }
+    updateScrollUI();
+    addEventListener('scroll', updateScrollUI, {passive:true});
+
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navAnchors.forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle?.setAttribute('aria-expanded','false');
+    }));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.18, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const id = entry.target.id;
+          navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        }
+      });
+    }, {threshold:.45});
+    sections.forEach(section => navObserver.observe(section));
+
+    function formatNumber(value, el){
+      const decimals = Number(el.dataset.decimals || 0);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const separator = el.dataset.separator;
+      let number = value.toFixed(decimals);
+      if(separator){ number = Math.round(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator); }
+      return prefix + number.replace('.', ',') + suffix;
+    }
+    const counted = new WeakSet();
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting || counted.has(entry.target)) return;
+        counted.add(entry.target);
+        entry.target.querySelectorAll('[data-count]').forEach(el => {
+          const target = Number(el.dataset.count || 0);
+          const start = performance.now();
+          const duration = 1200;
+          function tick(now){
+            const p = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = formatNumber(target * eased, el);
+            if(p < 1) requestAnimationFrame(tick);
+            else el.textContent = formatNumber(target, el);
+          }
+          requestAnimationFrame(tick);
+        });
+      });
+    }, {threshold:.35});
+    document.querySelectorAll('[data-count-section]').forEach(el => countObserver.observe(el));
+
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        item.classList.toggle('open');
+      });
+    });
+
+    document.querySelectorAll('.optional-img').forEach(img => {
+      img.addEventListener('error', () => {
+        img.classList.add('is-missing');
+        img.closest('figure, aside')?.classList.add('fallback-gradient');
+      }, {once:true});
+    });
+  </script>
+</body>
+</html>
